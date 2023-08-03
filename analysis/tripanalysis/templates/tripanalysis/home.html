@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Analysis</title>
+</head>
+<body>
+    {% if not data%}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        
+        <input type="submit" value="Submit">
+        
+    </form>
+    {% endif %}
+    {%if data %}
+        {% for d in data%}
+            <h4>License Plate : {{d.license_plate}}, Total Distance Travelled : {{d.total_distance_travelled}},
+                Average Speed : {{d.avg_speed}}, Transporter Name : {{d.trans_name}},
+                Speed Violations Count : {{d.speed_violations_count}}<h4>
+                <br><br>
+        {%endfor%}
+    {% endif%}
+    
+</body>
+</html>
